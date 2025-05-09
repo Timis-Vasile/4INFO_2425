@@ -7,11 +7,15 @@
 <script>
     export let counter = 0;
 
+    import { store_doublecounter } from '../js/store.js';
+
     function counter_incr() {
         counter += 2;
+        $store_doublecounter = counter;
     }
     function counter_decr() {
         counter -= 3;
+        $store_doublecounter = counter;
     }
 </script>
 

@@ -7,11 +7,26 @@
 <script>
     export let counter = 0;
 
+    import { createEventDispatcher } from 'svelte';
+    import { store_counter } from '../js/store.js';
+    const dispatch = createEventDispatcher();
+
     function counter_incr() {
         counter += 1;
+        $store_counter = counter;
+        emit_event('incr');
     }
     function counter_decr() {
         counter -= 1;
+        $store_counter = counter;
+        emit_event('decr');
+    }
+
+    function emit_event(tipo) {
+        dispatch('contatore', {
+            tipo: tipo,
+            valore:counter
+        });
     }
 </script>
 
